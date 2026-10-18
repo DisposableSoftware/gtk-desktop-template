@@ -58,8 +58,8 @@ What you get:
   headless sway, D-Bus session and XDG dirs, so it works with the screen locked and never
   touches your desktop. `scales.sh` checks the layout at scales 1, 1.25, 1.5 and 2.
 - **Releases**: `release-check.sh` recommends a semver bump from the spec's status
-  changes, `release.sh` bumps, tags and drafts notes, and the pre-push hook offers to do
-  it all when you push main.
+  changes, `release.sh` bumps, tags and drafts notes, the pre-push hook offers to do
+  it all when you push main, and `/release` does it from Claude Code.
 - **Nix**: package, devshell, `nix flake check` (tests, clippy, rustfmt), overlay, and
   NixOS and home-manager modules.
 
