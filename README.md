@@ -39,16 +39,17 @@ headless tests) comes from the devshell or `nix-shell` lines in the scripts.
    `origin`; pass them as the 4th and 5th arguments to override. The script removes
    itself and this section.
 3. Edit `spec/product.md` to say what your app is, then start Claude Code and ask for
-   features with `/feature` and fixes with `/bug`.
+   features with `/feature`, fixes with `/bug`, and planned work with `/implement`.
 
 What you get:
 
 - **`spec/`**: every behaviour as a numbered requirement with a status and how it is
   verified. `CLAUDE.md` makes every change go spec first: a `spec:` commit, then code
   with a `Spec: ID` trailer.
-- **`/feature` and `/bug`** (`.claude/skills/`): `/feature` drafts the spec change and
-  waits for your approval before writing code; `/bug` reproduces, finds the spec gap,
-  fixes and verifies without stopping.
+- **`/feature`, `/bug` and `/implement`** (`.claude/skills/`): `/feature` drafts the spec
+  change and waits for your approval before writing code; `/bug` reproduces, finds the
+  spec gap, fixes and verifies without stopping; `/implement` builds the roadmap's
+  planned rows in order, one verified commit each.
 - **Spec conformance tests** (`src/spec_tests.rs`): the keybinding and config tables in
   the spec are checked against the code, the example config files and the man page.
 - **First-run config**: `config.ini` and `keybindings.ini` are created with every default
