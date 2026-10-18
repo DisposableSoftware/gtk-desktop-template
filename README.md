@@ -62,8 +62,6 @@ What you get:
 - **Nix**: package, devshell, `nix flake check` (tests, clippy, rustfmt), overlay, and
   NixOS and home-manager modules.
 
-[cmx](https://github.com/DisposableSoftware/cmx-gtk), a comic reader, is an app built
-from this template.
 <!-- template:end -->
 
 
@@ -122,3 +120,14 @@ scripts/manual/headless.sh scripts/manual/smoke.sh
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+<!-- template:begin -->
+## Built with this template
+
+- [cmx](https://github.com/DisposableSoftware/cmx-gtk): a minimal comic reader for `.cbz`
+  files, a GTK 4 port of the macOS app.
+- [Junk Drawer](https://github.com/DisposableSoftware/junk-drawer): a tiny file manager
+  for Hyprland, the app this template was taken from.
+- [Downer](https://github.com/DisposableSoftware/downer): a small Markdown viewer for
+  Hyprland, in Catppuccin colours.
+<!-- template:end -->
