@@ -54,9 +54,9 @@ $changes
 ## Install
 
 \`\`\`sh
-nix run github:DisposableSoftware/template-app/v$new
+nix run github:DisposableSoftware/gtk-desktop-template/v$new
 \`\`\`
 
-See the [README](https://github.com/DisposableSoftware/template-app/blob/v$new/README.md).
+See the [README](https://github.com/DisposableSoftware/gtk-desktop-template/blob/v$new/README.md).
 NOTES
 echo "v$new"

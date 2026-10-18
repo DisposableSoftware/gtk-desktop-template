@@ -11,12 +11,21 @@
 <!-- template:begin -->
 ## Using this template
 
-This is a Rust + GTK 4 + Nix app skeleton for building apps with Claude Code, spec first.
-It is the workflow from [Junk Drawer](https://github.com/DisposableSoftware/junk-drawer),
-with the file manager taken out: a window that says hello, a config file, keybindings, a
-man page, Nix modules and the tooling that keeps them honest.
+A Rust + GTK 4 + Nix skeleton for building Wayland desktop apps with
+[Claude Code](https://claude.com/claude-code), spec first. It is the workflow from
+[Junk Drawer](https://github.com/DisposableSoftware/junk-drawer) with the file manager
+taken out: a window that says hello, a config file, keybindings, a man page, Nix modules
+and the tooling that keeps them honest.
 
-1. On GitHub, **Use this template**, then clone your new repo.
+You need Linux and Nix with flakes enabled. Everything else (Rust, GTK 4, sway for the
+headless tests) comes from the devshell or `nix-shell` lines in the scripts.
+
+1. Create your repo from this one: **Use this template** on GitHub, or
+
+   ```sh
+   gh repo create my-app --public --clone --template DisposableSoftware/gtk-desktop-template
+   ```
+
 2. Rename everything:
 
    ```sh
@@ -52,19 +61,23 @@ What you get:
   it all when you push main.
 - **Nix**: package, devshell, `nix flake check` (tests, clippy, rustfmt), overlay, and
   NixOS and home-manager modules.
+
+[cmx](https://github.com/DisposableSoftware/cmx-gtk), a comic reader, is an app built
+from this template.
 <!-- template:end -->
+
 
 ## Install
 
 ```sh
-nix run github:DisposableSoftware/template-app
+nix run github:DisposableSoftware/gtk-desktop-template
 ```
 
 Or as a flake input:
 
 ```nix
 {
-  inputs.template-app.url = "github:DisposableSoftware/template-app";
+  inputs.template-app.url = "github:DisposableSoftware/gtk-desktop-template";
 
   # NixOS
   imports = [ inputs.template-app.nixosModules.default ];

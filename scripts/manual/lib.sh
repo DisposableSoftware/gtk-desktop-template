@@ -79,6 +79,8 @@ launch() {
 }
 
 # keys WTYPE-ARGS...: sends keys only if one of the app's windows is focused.
+# wtype joins separate text arguments with spaces, and Space is often bound: send
+# `keys ll`, not `keys l l`. Named keys need -k (`keys -k space`, not `keys space`).
 keys() {
   if [ "$(active .class)" != "$APP" ]; then
     echo "$APP lost focus; stopping so keys don't go to another app" >&2
@@ -98,4 +100,13 @@ cleanup() { [ -n "${PID:-}" ] && kill "$PID" 2>/dev/null; true; }
 FAILS=0
 check() { # check DESCRIPTION EXPECTED ACTUAL
   if [ "$2" = "$3" ]; then echo "PASS  $1"; else echo "FAIL  $1 (expected '$2', got '$3')"; FAILS=$((FAILS+1)); fi
+}
+
+title() { active .title; }
+size() { active '"\(.size[0]) \(.size[1])"'; }
+# wait_for DESCRIPTION COMMAND EXPECTED: polls COMMAND for up to 5 s, then checks it.
+wait_for() {
+  local got
+  for _ in $(seq 25); do got=$(eval "$2"); [ "$got" = "$3" ] && break; sleep 0.2; done
+  check "$1" "$3" "$got"
 }

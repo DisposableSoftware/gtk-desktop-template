@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 [ $# -ge 3 ] || { sed -n '4,7s/^# \{0,1\}//p' "$0" >&2; exit 2; }
 name=$1 bin=$2 id=$3
 crate=${4:-$(tr '[:upper:] ' '[:lower:]-' <<<"$name")}
-repo=${5:-$(git remote get-url origin 2>/dev/null | sed -nE 's#.*github\.com[:/](.+/[^/]+?)(\.git)?$#\1#p')}
+repo=${5:-$(git remote get-url origin 2>/dev/null | sed -nE 's#.*github\.com[:/]([^/]+/[^/]+)$#\1#p' | sed 's/\.git$//')}
 repo=${repo:-DisposableSoftware/$crate}
 for v in "$bin" "$crate"; do
   [[ $v =~ ^[a-z][a-z0-9-]*$ ]] || { echo "'$v': use lowercase letters, digits and -" >&2; exit 2; }
@@ -25,7 +25,7 @@ esc() { sed 's/[&|\\]/\\&/g' <<<"$1"; }
 
 git ls-files -z | grep -zv -e '^LICENSE$' -e '^scripts/rename\.sh$' | xargs -0 sed -i -E \
   -e "s|${old_id//./\\.}|$(esc "$id")|g" \
-  -e "s|DisposableSoftware/template-app|$(esc "$repo")|g" \
+  -e "s|DisposableSoftware/gtk-desktop-template|$(esc "$repo")|g" \
   -e "s|template\\\\-app|$(esc "${crate//-/\\-}")|g" \
   -e "s|template-app|$crate|g" \
   -e "s|Template App|$(esc "$name")|g" \

@@ -36,13 +36,14 @@ CONF
   # Services the bus starts inherit this environment: keep them out of the user's
   # runtime dir, and stop gvfs mounting its FUSE view there.
   mkdir -m 700 "$B/run"
-  # The user's own state, config and cache stay untouched; scripts may still point
-  # XDG_CONFIG_HOME or XDG_STATE_HOME at their own temp dirs. Their GTK settings (font,
-  # icon theme) come along through XDG_CONFIG_DIRS, as the portal would give them.
-  mkdir -p "$B/state" "$B/config" "$B/cache" "$B/xdg/gtk-4.0"
+  # The user's own state, config, cache and data (recently-used.xbel) stay untouched;
+  # scripts may still point XDG_CONFIG_HOME or XDG_STATE_HOME at their own temp dirs.
+  # Their GTK settings (font, icon theme) come along through XDG_CONFIG_DIRS, as the
+  # portal would give them.
+  mkdir -p "$B/state" "$B/config" "$B/cache" "$B/data" "$B/xdg/gtk-4.0"
   cp "${XDG_CONFIG_HOME:-$HOME/.config}/gtk-4.0/settings.ini" "$B/xdg/gtk-4.0/" 2>/dev/null
   HEADLESS_BUS=1 XDG_RUNTIME_DIR=$B/run GVFS_DISABLE_FUSE=1 \
-    XDG_STATE_HOME=$B/state XDG_CONFIG_HOME=$B/config XDG_CACHE_HOME=$B/cache \
+    XDG_STATE_HOME=$B/state XDG_CONFIG_HOME=$B/config XDG_CACHE_HOME=$B/cache XDG_DATA_HOME=$B/data \
     XDG_CONFIG_DIRS=$B/xdg:${XDG_CONFIG_DIRS:-/etc/xdg} \
     dbus-run-session --config-file="$B/bus.conf" -- "$0" "$@"
   status=$?; rm -rf "$B"; exit $status

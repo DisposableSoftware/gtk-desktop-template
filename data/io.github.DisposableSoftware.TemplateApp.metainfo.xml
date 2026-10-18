@@ -17,8 +17,8 @@
     <p>Template App opens a window that says hello.</p>
   </description>
   <launchable type="desktop-id">io.github.DisposableSoftware.TemplateApp.desktop</launchable>
-  <url type="homepage">https://github.com/DisposableSoftware/template-app</url>
-  <url type="bugtracker">https://github.com/DisposableSoftware/template-app/issues</url>
+  <url type="homepage">https://github.com/DisposableSoftware/gtk-desktop-template</url>
+  <url type="bugtracker">https://github.com/DisposableSoftware/gtk-desktop-template/issues</url>
   <content_rating type="oars-1.1"/>
   <provides>
     <binary>tapp</binary>
