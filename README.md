@@ -47,9 +47,9 @@ What you get:
   verified. `CLAUDE.md` makes every change go spec first: a `spec:` commit, then code
   with a `Spec: ID` trailer.
 - **`/feature`, `/bug` and `/implement`** (`.claude/skills/`): `/feature` drafts the spec
-  change and waits for your approval before writing code; `/bug` reproduces, finds the
-  spec gap, fixes and verifies without stopping; `/implement` builds the roadmap's
-  planned rows in order, one verified commit each.
+  change and `/bug` reproduces a bug and drafts the spec gap; both ask you to approve
+  and implement, or approve the spec only. `/implement` builds the roadmap's approved
+  rows in order, one verified commit each.
 - **Spec conformance tests** (`src/spec_tests.rs`): the keybinding and config tables in
   the spec are checked against the code, the example config files and the man page.
 - **First-run config**: `config.ini` and `keybindings.ini` are created with every default
