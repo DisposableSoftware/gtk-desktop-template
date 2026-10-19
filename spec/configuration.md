@@ -9,6 +9,8 @@
 | `CONF-3` | When the app starts and `config.ini` or `keybindings.ini` doesn't exist, it creates the missing file (and the folder) from the example (`CONF-2`), with every line commented out, so the file changes nothing until a line is uncommented. A file that exists is never written to, whether it is a regular file, a symlink (as with dotfiles or home-manager) or a dangling symlink. If a file can't be created, that is warned about and the app starts normally. | done | `config::tests` |
 | `CONF-4` | `[window] width` and `height`: the size of new windows in logical px, clamped to 300–8192 and 200–8192. | done | `config::tests`, `spec_tests` |
 | `CONF-5` | `[view] greeting`: the text the window shows (`WIN-1`). | done | `config::tests`, `spec_tests` |
+| `CONF-6` | `[appearance] flavor`: `latte`, `frappe`, `macchiato`, `mocha` or `gtk`, default `mocha`. An unknown value falls back to `mocha` with a warning. Style guide: palette.md, "Config". | planned | `config::tests`, `spec_tests` |
+| `CONF-7` | `[appearance] accent`: one of the 14 Catppuccin accent names, default `mauve`, with unknown values falling back to `mauve`; and `opacity`, 0.0 to 1.0 clamped, default `0.85`. Style guide: palette.md, "Config". | planned | `config::tests`, `spec_tests` |
 
 ## Defaults
 
